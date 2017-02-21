@@ -10,9 +10,13 @@
 * Start Schema Registry on this node
   `confluent/bin/schema-registry-start etc/schema-registry/schema-registry.properties`
 
-## Run this example
+## Run stream example
 * Create input and output Kafka topics for the respective application
 * Use the `producer/avro-producer.py` script to produce some messages to the topic
 * `cd streams-example`
 * `mvn clean package`
 * `java -cp target/streams-examples-0.0.1-standalone.jar example.<class-name>`
+
+## Run Connect example
+* Edit the source and sink connector properties. There are examples in folder `/connect-example`
+* Command to start the process `confluent/bin/connect-standalone etc/schema-registry/connect-avro-standalone.properties etc/kafka-connect-jdbc/source-quickstart-postgres.properties <path-to-connector-2.properties> <path-to-connector-3.properties> ...`
