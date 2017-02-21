@@ -1,0 +1,7 @@
+{"namespace": "example.avro",
+ "type": "record",
+ "name": "key",
+ "fields": [
+     {"name": "key", "type": "string"}
+ ]
+ }
