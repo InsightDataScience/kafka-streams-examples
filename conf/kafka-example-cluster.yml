@@ -1,0 +1,11 @@
+subnet_id: <subnet-id>
+num_instances: 3
+key_name: <key-pair-name>
+security_group_ids: <security-group-id>
+instance_type: <instance-type>
+tag_name: <CLUSTER_NAME>
+vol_size: 8
+role: worker
+vol_type: standard
+purchase_type: on_demand
+use_eips: true
