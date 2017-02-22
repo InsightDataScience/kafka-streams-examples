@@ -4,6 +4,7 @@ cd /usr/local/librdkafka-0.9.2-RC1/
 make -j
 sudo make install
 
+cd ~
 git clone https://github.com/confluentinc/confluent-kafka-python.git /usr/local
 cd /usr/local/confluent-kafka-python
 sudo C_INCLUDE_PATH=... LIBRARY_PATH=.. pip install .[avro]
