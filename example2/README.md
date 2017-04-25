@@ -4,4 +4,4 @@
 * Consume messages from this topic on the console
 * Check schema registry endpoint to see the schema
 
-Use avro-producer example from the `prodcuer` folder
+Use avro-producer example from the `producer` folder
