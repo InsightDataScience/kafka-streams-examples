@@ -46,9 +46,6 @@ object AvroCountExample {
     }
     val stringSerde: Serde[String] = Serdes.String()
     val longSerde: Serde[JLong] = Serdes.Long()
-    
-    // Read the input Kafka topic into a KStream instance.
-//    val avroLines: KStream[String, GenericRecord] = builder.stream("AvroTopic")
 
     val avroLines: KStream[String, GenericRecord] = builder.stream("postgres_accounts")
     import KeyValueImplicits._
@@ -90,7 +87,7 @@ object AvroCountExample {
   }
 
   def createJObject(name: String, sum: Long): JObject = {val jobject: JObject = ("name" -> ("string" -> name)) ~ ("sum" -> sum); jobject}
-  
+
   def createAvroObject(name: String, sum: Long) = {
     val opSchema: String = "{\"type\":\"record\",\"name\":\"redshift_test4\",\"fields\":[{\"name\":\"sum\",\"type\":\"int\"},{\"name\":\"name\",\"type\":\"string\"}]}"
     val parser = new Schema.Parser()

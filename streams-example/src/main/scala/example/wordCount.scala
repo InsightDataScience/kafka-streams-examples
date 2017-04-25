@@ -15,7 +15,7 @@ object WordCountExample {
 
     val streamingConfig = {
       val settings = new Properties
-      settings.put(StreamsConfig.APPLICATION_ID_CONFIG, "map-function-scala-example")
+      settings.put(StreamsConfig.APPLICATION_ID_CONFIG, "word-count-example")
       settings.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
       settings.put(StreamsConfig.ZOOKEEPER_CONNECT_CONFIG, "localhost:2181")
       // Specify default (de)serializers for record keys and for record values.
@@ -26,13 +26,12 @@ object WordCountExample {
     val stringSerde: Serde[String] = Serdes.String()
     val longSerde: Serde[JLong] = Serdes.Long()
 
-    
     // Read the input Kafka topic into a KStream instance.
     val textLines: KStream[Array[Byte], String] = builder.stream("TextLinesTopic")
 
     import collection.JavaConverters.asJavaIterableConverter
     import KeyValueImplicits._
-   
+
     val wordCounts: KStream[String, JLong] = textLines
       .flatMapValues(value => value.toLowerCase.split("\\W+").toIterable.asJava)
       .groupBy((key, word) => word)
